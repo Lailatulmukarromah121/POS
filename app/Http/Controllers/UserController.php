@@ -9,11 +9,10 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     public function index()
-    {
-        $user = UserModel::findOr(20, ['username', 'nama'], function () {
-            abort(404);
-        });
+{
+    // Mencari user_id = 1. Ini akan berhasil karena datanya ada.
+    $user = UserModel::findOrFail(1);
 
-        return view('user', ['data' => $user]);
-    }
+    return view('user', ['data' => $user]);
+}
 }
