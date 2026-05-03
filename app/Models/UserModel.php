@@ -11,21 +11,11 @@ class UserModel extends Model
 
     protected $table = 'm_user';
     protected $primaryKey = 'user_id';
-    public $timestamps = true;
 
-    protected $fillable = [
-        'level_id',
-        'username',
-        'nama',
-        'password',
-    ];
-
-    protected $hidden = [
-        'password',
-    ];
-
-    public function level()
-    {
-        return $this->belongsTo(LevelModel::class, 'level_id', 'level_id');
-    }
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['level_id', 'username', 'nama'];
 }
