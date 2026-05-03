@@ -9,10 +9,8 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     public function index()
-{
-    // Mencari user_id = 1. Ini akan berhasil karena datanya ada.
-    $user = UserModel::findOrFail(1);
-
-    return view('user', ['data' => $user]);
-}
+    {
+        $data = UserModel::all();
+        return view('user', ['data' => $data]);
+    }
 }
