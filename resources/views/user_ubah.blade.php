@@ -50,48 +50,29 @@
             text-align: center;
         }
     </style>
-</head>
-<body>
-    <div class="form-container">
-        <h1>Ubah Data User</h1>
-        <form method="post" action="/user/ubah_simpan/{{ $data->user_id }}">
-            {{ csrf_field() }}
-            @method('PUT')
-
-            <div class="form-group">
-                <label>User ID:</label>
-                <input type="text" name="user_id" value="{{ $data->user_id }}" readonly>
-            </div>
-
-            <div class="form-group">
-                <label>Username:</label>
-                <input type="text" name="username" value="{{ $data->username }}" required>
-            </div>
-
-            <div class="form-group">
-                <label>Nama:</label>
-                <input type="text" name="nama" value="{{ $data->nama }}" required>
-            </div>
-
-            <div class="form-group">
-                <label>Password (kosongkan jika tidak ingin mengubah):</label>
-                <input type="password" name="password" placeholder="Masukkan password baru">
-            </div>
-
-            <div class="form-group">
-                <label>Level ID:</label>
-                <select name="level_id" required>
-                    <option value="1" {{ $data->level_id == 1 ? 'selected' : '' }}>Administrator</option>
-                    <option value="2" {{ $data->level_id == 2 ? 'selected' : '' }}>Manager</option>
-                    <option value="3" {{ $data->level_id == 3 ? 'selected' : '' }}>Staff/Kasir</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <button type="submit">Simpan Perubahan</button>
-                <button type="button" class="btn-cancel" onclick="history.back()">Batal</button>
-            </div>
-        </form>
-    </div>
+<<body>
+    <h1>Data User</h1>
+    <a href="{{ url('/user/tambah') }}">+ Tambah User</a>
+    <table border="1" cellpadding="2" cellspacing="0">
+        <tr>
+            <td>ID</td>
+            <td>Username</td>
+            <td>Nama</td>
+            <td>ID Level Pengguna</td>
+            <td>Aksi</td>
+        </tr>
+        @foreach ($data as $d)
+        <tr>
+            <td>{{ $d->user_id }}</td>
+            <td>{{ $d->username }}</td>
+            <td>{{ $d->nama }}</td>
+            <td>{{ $d->level_id }}</td>
+            <td>
+                <a href="/user/ubah/{{ $d->user_id }}">Ubah</a> | 
+                <a href="/user/hapus/{{ $d->user_id }}">Hapus</a>
+            </td>
+        </tr>
+        @endforeach
+    </table>
 </body>
 </html>

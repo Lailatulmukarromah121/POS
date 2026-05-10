@@ -52,40 +52,25 @@
     </style>
 </head>
 <body>
-    <div class="form-container">
-        <h1>Tambah User Baru</h1>
-        <form action="/user/store" method="POST">
-            @csrf
-            <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
-            </div>
+    <h1>Form Tambah Data User</h1>
+    <form method="post" action="/user/tambah_simpan">
 
-            <div class="form-group">
-                <label for="nama">Nama:</label>
-                <input type="text" id="nama" name="nama" required>
-            </div>
+        {{ csrf_field() }}
 
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
+        <label>Username</label>
+        <input type="text" name="username" placeholder="Masukkan Username">
+        <br>
+        <label>Nama</label>
+        <input type="text" name="nama" placeholder="Masukkan Nama">
+        <br>
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Masukkan Password">
+        <br>
+        <label>Level ID</label>
+        <input type="number" name="level_id" placeholder="Masukkan ID Level">
+        <br><br>
+        <input type="submit" class="btn btn-success" value="Simpan">
 
-            <div class="form-group">
-                <label for="level_id">Level:</label>
-                <select id="level_id" name="level_id" required>
-                    <option value="">-- Pilih Level --</option>
-                    <option value="1">Administrator</option>
-                    <option value="2">Manager</option>
-                    <option value="3">Staff/Kasir</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <button type="submit">Simpan</button>
-                <button type="button" class="btn-cancel" onclick="history.back()">Batal</button>
-            </div>
-        </form>
-    </div>
+    </form>
 </body>
 </html>
