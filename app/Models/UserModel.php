@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\LevelModel;
 
 class UserModel extends Model
 {
@@ -14,4 +15,9 @@ class UserModel extends Model
 
     // PASTIKAN 'password' ADA DI DALAM ARRAY INI
     protected $fillable = ['level_id', 'username', 'nama', 'password'];
+
+    public function level()
+{
+    return $this->belongsTo(LevelModel::class, 'level_id', 'level_id');
+}
 }
